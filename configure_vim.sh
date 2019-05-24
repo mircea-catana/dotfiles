@@ -1,4 +1,6 @@
 SCRIPT_PATH=$(pwd)
+
+mkdir ~/.vim
 cd ~/.vim/
 
 mkdir autoload
