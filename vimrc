@@ -1,4 +1,4 @@
-" Vim config
+" Vim Config
 set t_Co=256
 set encoding=utf-8
 set ttimeoutlen=10
@@ -8,7 +8,7 @@ set ignorecase
 " Pathogen
 execute pathogen#infect()
 
-" Solarized
+" Color Scheme
 syntax enable
 set background=dark
 colorscheme candid
@@ -27,9 +27,6 @@ noremap <C-m> :NERDTreeToggle<CR>
 
 " Formatting
 set number
-"set list
-"set listchars=trail:~
-
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -38,8 +35,7 @@ set backspace=2
 set autoindent
 set cindent
 
-"set tags=/data/tags
-
+" CScope
 if has('cscope')
     if has('quickfix')
         set cscopequickfix=s-,c-,d-,i-,t-,e-
@@ -53,7 +49,7 @@ if has('cscope')
     cnoreabbrev csh cs help
 
     command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMSRC/src
-"    cs add $CSCOPE_DB
 
     set cscopetag cscopeverbose
 endif
+
