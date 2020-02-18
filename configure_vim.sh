@@ -23,6 +23,10 @@ if [ ! -d ~/.vim/colors ]; then
     mkdir colors
 fi
 
+if [ ! -d ~/.vim/after/syntax ]; then
+    mkdir -p after/syntax
+fi
+
 
 # Pathogen
 if [ ! -f ~/.vim/autoload/pathogen.vim ]; then
@@ -33,12 +37,13 @@ else
     curl -LSso ./autoload/pathogen.vim https://tpo.pe/pathogen.vim
 fi
 
-# Candid Color Scheme
-if [ ! -f ~/.vim/colors/candid.vim ]; then
+# Color Scheme
+if [ ! -f ~/.vim/colors/edge.vim ]; then
     echo -e "${GREEN}Installing color scheme...${NC}"
     # this seems to be broken for the moment, copying locally for now
     #curl -LSso ./colors/candid.vim https://raw.githubusercontent.com/flrnprz/candid.vim/master/colors/candid.vim
     cd $SCRIPT_PATH
+    cp edge.vim ~/.vim/colors/
     cp candid.vim ~/.vim/colors/
 fi
 
@@ -98,7 +103,7 @@ else
 fi
 
 # Vim Multiple Cursors
-if [ ! -d ~/.vim/bundle/vim-fugitive ]; then
+if [ ! -d ~/.vim/bundle/vim-multiple-cursors ]; then
     echo -e "${GREEN}Installing vim-multiple-cursors...${NC}"
     cd ~/.vim/bundle/
     git clone https://github.com/terryma/vim-multiple-cursors
@@ -106,6 +111,25 @@ else
     echo -e "${GREEN}Updating vim-multiple-cursors...${NC}"
     cd ~/.vim/bundle/vim-multiple-cursors/
     git pull
+fi
+
+# Vim C/CPP Enhanced Highlight
+if [ ! -f ~/.vim/after/syntax/cpp.vim ]; then
+    echo -e "${GREEN}Installing vim-cpp-enhanced-highlight...${NC}"
+    cd $SCRIPT_PATH
+    git clone https://github.com/octol/vim-cpp-enhanced-highlight.git
+    cp vim-cpp-enhanced-highlight/after/syntax/cpp.vim ~/.vim/after/syntax/
+    cp vim-cpp-enhanced-highlight/after/syntax/c.vim ~/.vim/after/syntax/
+    rm -rf vim-cpp-enhanced-highlight
+else
+    echo -e "${GREEN}Updating vim-cpp-enhanced-highlight...${NC}"
+    rm ~/.vim/after/syntax/cpp.vim
+    rm ~/.vim/after/syntax/c.vim
+    cd $SCRIPT_PATH
+    git clone https://github.com/octol/vim-cpp-enhanced-highlight.git
+    cp vim-cpp-enhanced-highlight/after/syntax/cpp.vim ~/.vim/after/syntax/
+    cp vim-cpp-enhanced-highlight/after/syntax/c.vim ~/.vim/after/syntax/
+    rm -rf vim-cpp-enhanced-highlight
 fi
 
 

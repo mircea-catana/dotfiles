@@ -11,7 +11,7 @@ execute pathogen#infect()
 " Color Scheme
 syntax enable
 set background=dark
-colorscheme candid
+colorscheme edge
 
 " Airline
 let g:airline_theme='powerlineish'
@@ -24,6 +24,9 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 let NERDTreeQuitOnOpen=1
 noremap <C-m> :NERDTreeToggle<CR>
+
+" C/CPP enhanced highlight
+let g:cpp_member_variable_highlight=1
 
 " Formatting
 set number
