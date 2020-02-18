@@ -36,7 +36,10 @@ fi
 # Candid Color Scheme
 if [ ! -f ~/.vim/colors/candid.vim ]; then
     echo -e "${GREEN}Installing color scheme...${NC}"
-    curl -LSso ./colors/candid.vim https://raw.githubusercontent.com/flrnprz/candid.vim/master/colors/candid.vim
+    # this seems to be broken for the moment, copying locally for now
+    #curl -LSso ./colors/candid.vim https://raw.githubusercontent.com/flrnprz/candid.vim/master/colors/candid.vim
+    cd $SCRIPT_PATH
+    cp candid.vim ~/.vim/colors/
 fi
 
 # CTRLP
