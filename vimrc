@@ -4,6 +4,7 @@ set encoding=utf-8
 set ttimeoutlen=10
 set laststatus=2
 set ignorecase
+set nocompatible
 
 " Pathogen
 execute pathogen#infect()
@@ -28,6 +29,9 @@ noremap <C-m> :NERDTreeToggle<CR>
 " C/CPP enhanced highlight
 let g:cpp_member_variable_highlight=1
 
+" CtrlP
+let g:ctrlp_working_path_mode='rc'
+
 " Formatting
 set number
 set tabstop=4
@@ -38,21 +42,6 @@ set backspace=2
 set autoindent
 set cindent
 
-" CScope
-if has('cscope')
-    if has('quickfix')
-        set cscopequickfix=s-,c-,d-,i-,t-,e-
-    endif
-
-    cnoreabbrev csa cs add
-    cnoreabbrev csf cs find
-    cnoreabbrev csk cs kill
-    cnoreabbrev csr cs reset
-    cnoreabbrev css cs show
-    cnoreabbrev csh cs help
-
-    command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMSRC/src
-
-    set cscopetag cscopeverbose
-endif
-
+" Ctags
+set tags=tags;
+command! MakeTags !ctags -R .
