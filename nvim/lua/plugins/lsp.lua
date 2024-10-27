@@ -56,11 +56,6 @@ return
                         or require("lspconfig.util").find_git_ancestor(fname)
                     end,
 
-                    capabilities =
-                    {
-                        offsetEncoding = { "utf-8" },
-                    },
-
                     cmd =
                     {
                         "clangd",
@@ -84,6 +79,7 @@ return
 
         config = function()
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
+            capabilities.offsetEncoding = { "utf-16" }
 
             local lspconfig = require("lspconfig")
             lspconfig.clangd.setup({

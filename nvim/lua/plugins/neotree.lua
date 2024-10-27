@@ -12,7 +12,6 @@ return
 
 	config = function()
 		vim.keymap.set("n", "<leader>e", ":Neotree filesystem reveal left<CR>", { desc = "Toggle Neo Tree" })
-		vim.keymap.set("n", "<leader>bf", ":Neotree buffers reveal float<CR>", { desc = "Neotree Buffers" })
 
         local config = require("neo-tree")
 
