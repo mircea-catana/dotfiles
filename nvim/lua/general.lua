@@ -7,10 +7,9 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Indenting
-vim.opt.smartindent = true
-vim.opt.breakindent = true
+vim.opt.smartindent = true -- conflicts with treesitter
+vim.opt.breakindent = true -- conflicts with treesitter
 
--- Tab expansion
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -23,14 +22,6 @@ vim.opt.smartcase = true
 -- Splits
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-
-vim.keymap.set('n', '<leader>sv', '<C-w><C-v>', { desc = "Split Vertical" })
-vim.keymap.set('n', '<leader>sh', '<C-w><C-s>', { desc = "Split Horizontal" })
-
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = "Move Left" })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = "Move Down" })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = "Move Up" })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = "Move Right" })
 
 -- Misc
 vim.opt.hlsearch = false
@@ -45,9 +36,18 @@ vim.opt.inccommand = 'split'
 vim.opt.scrolloff = 10
 vim.opt.wrap = false
 vim.opt.colorcolumn = '120'
+--vim.opt.shell = "bash.exe -i -l"
+vim.opt.shell = "powershell.exe"
 
+-- Sign Icons
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
+-- Diagnostics
+toggle_diagnostics = function()
+    vim.diagnostic.enable(not vim.diagnostic.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+end
+

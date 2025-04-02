@@ -1,37 +1,22 @@
 return
 {
-    {
-        "catppuccin/nvim",
-        lazy = false,
-        name = "catppuccin",
-        priority = 1000,
+    "rebelot/kanagawa.nvim",
+    lazy = false,
+    priority = 1000,
 
-        config = function()
-            --vim.cmd.colorscheme "catppuccin-mocha"
-        end
-    },
+    config = function()
+        require("kanagawa").setup(
+        {
+            undercurl = false,
+            commentStyle = { italic = false },
+            keywordStyle = { italic = false },
+            statementStyle = { bold = false },
 
-    {
-        "rebelot/kanagawa.nvim",
-        lazy = false,
-        name = "kanagawa",
-        priority = 1000,
+            overrides = function(color)
+                return { ["@lsp.type.comment"] = { link = "Comment" } }
+            end,
+        })
 
-        config = function()
-            require("kanagawa").setup({
-                undercurl = false,
-                commentStyle = { italic = false },
-                keywordStyle = { italic = false },
-                statementStyle = { bold = false },
-                overrides = function(color)
-                    return {
-                        ["@lsp.type.comment"] = { link = "Comment" },
-                    }
-                end,
-            })
-
-            vim.cmd.colorscheme "kanagawa"
-        end
-    }
-
+        vim.cmd.colorscheme "kanagawa"
+    end,
 }

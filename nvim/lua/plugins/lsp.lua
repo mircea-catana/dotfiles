@@ -92,20 +92,4 @@ return
             vim.keymap.set("n", "ga", vim.lsp.buf.code_action, { desc = "Code Actions" })
         end,
     },
-
-    {
-        "nvimtools/none-ls.nvim",
-        config = function()
-            local null_ls = require("null-ls")
-
-            null_ls.setup({
-                sources = {
-                    null_ls.builtins.formatting.clang_format,
-                    -- null_ls.builtins.diagnostics.cppcheck,
-                },
-            })
-
-            vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, { desc = "Format code" })
-        end,
-    },
 }
